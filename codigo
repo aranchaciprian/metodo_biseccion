@@ -1,0 +1,73 @@
+c Los comentarios se escriben asi, colocando una 'c' al principio
+c Para escribir el codigo se deben dejar 6 espacios en blanco
+        
+      program HOJA1PROBLEMA1
+      implicit none
+
+c EXPLICACION DEL EJERCICIO     https://es.wikipedia.org/wiki/M%C3%A9todo_de_bisecci%C3%B3n
+
+c La idea es que tenemos un intervalo (a,b), encontramos el punto medio entre estos, es decir, c=(a+b)/2.
+c Si fun(c)=0, pues c es una raiz
+c Si no lo es, se mira si fun(a)*fun(c)<0 y si es asi pues defines el nuevo intervalo en (a,c) b=c. Si no se cumple eso, se debe cumplir que si fun(b)*fun(c)<0 y si es asi pues defines el nuevo intervalo en (c,b) a=c
+c Y se vuelve a repetir todo esto hasta que el intervalo se hace muy pequeño 
+
+
+c Declaracion de variables    
+  
+      real*8 a, b, c, fun, prec
+      integer n
+c Entrada
+      print*, 'RAICES DE LA FUNCION fun(x) (metodo de la biseccion)'
+      print*, 'Ingrese el valor del extremo inferior del intervalo: '
+      read*, a
+      print*, 'Ingrese el valor del extremo superior del intervalo: '
+      read*, b
+      print*,'Ingrese la precision deseada'
+      read*,prec
+     
+      n=0
+ 
+
+c Esto: '.LT.0.d0' significa menor a cero. 
+      if(fun(a)*fun(b).LT.0.d0) then
+       
+            DO WHILE((b-a).GE.prec)
+                    n=n+1
+                     c=(a+b)*0.5
+   
+        
+                if(abs(fun(c)).LT.1.d-10)then
+                          print*, 'La raiz es: ', c
+                else
+                        if(fun(a)*fun(c).LT.0.d0)then
+       
+                            b=c
+                        else
+                             a=c
+           
+                        end if
+   
+                end if
+           
+            end do
+       
+                    print*,'El numero de iteraciones realiazadas es: ',n
+                    print*,'El valor de c es: ',c
+       else 
+                    print*,'No hay raices en el intervalo'
+                    
+       end if  
+      stop
+      end
+
+c Funcion. Se escriben al final del codigo principal
+     
+      real*8 function fun(x)
+      implicit none
+      real*8 x
+      fun= (x*0.5)+(2*COS(x))
+      
+      return
+      end
+
+

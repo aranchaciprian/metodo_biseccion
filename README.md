@@ -1,6 +1,6 @@
 # Método de la Bisección
 
-El método de la bisección es un algoritmo numérico utilizado para encontrar una raíz de una función continua \( f(x) \) en un intervalo \([a, b]\), siempre que se cumpla que \( f(a) \cdot f(b) < 0 \) (es decir, la función cambia de signo en el intervalo, garantizando la existencia de al menos una raíz).
+El método de la bisección es un algoritmo numérico utilizado para encontrar una raíz de una función continua f(x) en un intervalo [a, b], siempre que se cumpla que f(a) ⋅ f(b) < 0 (es decir, la función cambia de signo en el intervalo, garantizando la existencia de al menos una raíz).
 
 ## Pasos del Método
 
